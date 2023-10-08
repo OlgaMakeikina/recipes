@@ -1,0 +1,18 @@
+body {
+  background-color: aliceblue;
+}
+
+.container {
+  padding: 20px;
+  border: 1px grey solid; 
+}
+
+.scroll {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  border: 0px; 
+  background-color: transparent;
+}
