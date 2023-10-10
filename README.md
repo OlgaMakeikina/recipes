@@ -1,23 +1,20 @@
 # Breakfasts for the whole week
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Description
 
-In the project directory, you can run:
+The app lets to choose a recipe for breakfast from the list. Recipes are shown in the form of slides that are switched using buttons. The application allows you to remove all recipes from the list or one of them.
+
 
 ### Features 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+An array is used, the elements of which are organized in the form of slides and which can be removed completely, or one element
 
 ### Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Push the button ">>" or "<<" to choose a recipe.
+2. Push the button Remove recipe to delete pne one them.
+3. Push the button Remove all to delete all elements.
+4. Push the button Show more/ Show less to open or to close the recipe.
 
 ### technologies Used
 
