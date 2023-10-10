@@ -5,8 +5,8 @@ import './App.css';
 
 function App() {
 const [weekMenu, setWeekMenu] = useState(0);
-const {id, day, name, image, description} = data[weekMenu];
 const [menu, setMenu] = useState(data);
+const [showMore, setShowMore] = useState(false);
 const removeRecipe = (id) => {
   let newArray = menu.filter(recipe => recipe.id !== id)
   setMenu(newArray);
@@ -16,7 +16,7 @@ const previousRecipe = () => {
   setWeekMenu ((weekMenu => {
     weekMenu --;
     if (weekMenu<0) {
-      return data.length-1;
+      return menu.length-1;
     }
     return weekMenu
   }))
@@ -25,7 +25,7 @@ const previousRecipe = () => {
 const nextRecipe = () => {
   setWeekMenu ((weekMenu => {
     weekMenu ++;
-    if (weekMenu > data.length-1) {
+    if (weekMenu > menu.length-1) {
       weekMenu = 0;
     }
     return weekMenu
@@ -35,29 +35,32 @@ const nextRecipe = () => {
 
 
 return (
+  menu.length > 0 &&
   <div className='container'>
         <h1>List of {menu.length} ideas for breakfast</h1>
+
   <div> 
-     <button className='btn' onClick={previousRecipe}>Previous</button>
+<h2>{menu[weekMenu].id} - {menu[weekMenu].day} - {menu[weekMenu].name}</h2>
+</div>
+<div>
+<button className='removeBtn' onClick={() => removeRecipe(menu[weekMenu].id)}>Remove recipe</button>
+<button className='removeBtn' onClick={() => setMenu([])}>Remove all</button>
+</div>
+<div className='scroll'>
+<div> 
+     <button className='btn' onClick={previousRecipe}>&laquo;</button>
   </div>
-  
-  <div> 
-<h2>{day}</h2>
-</div>
-  <div> 
-<h2>{id} - {name}</h2>
+<div> 
+<img src={menu[weekMenu].image} alt="recipe" width="300px" height="400px"/>
 </div>
 <div> 
-<img src={image} alt="recipe" width="300px" height="400px"/>
-</div>
-<div> 
-<p>{description}</p>
-</div>
-<div> 
-     <button className='btn' onClick={nextRecipe}>Next</button>
+     <button className='btn' onClick={nextRecipe}>&raquo;</button>
   </div>
-<button onClick={() => removeRecipe(id)}>Remove</button>
-<button onClick={() => setMenu([])}>Remove all</button>
+  </div>
+<div> 
+<p>{showMore? menu[weekMenu].description : menu[weekMenu].description.substring(0,70) + "..."}
+<button className="showBtn" onClick = {() => setShowMore(!showMore)}>{showMore? "Show less" : "Show more"}</button></p>
+</div>
 
 </div>
 
